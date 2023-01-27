@@ -1,4 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 /* eslint-disable */
 
@@ -456,7 +457,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
               </svg>
               <span>You&apos;re up and running</span>
             </h2>
-            <a href="#commands"> What&apos;s next? </a>
+            <a href="#commands" (click)="showMessage()"> What&apos;s next? </a>
           </div>
           <div class="logo-container">
             <svg
@@ -843,4 +844,11 @@ nx affected:e2e</pre>
   styles: [],
   encapsulation: ViewEncapsulation.None,
 })
-export class NxWelcomeComponent {}
+export class NxWelcomeComponent {
+  constructor(private http: HttpClient) {}
+  showMessage() {
+    this.http.get('http://localhost:3333/api/hello').subscribe((response) => {
+      console.log(response);
+    });
+  }
+}
