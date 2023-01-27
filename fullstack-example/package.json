@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "build": "npx install && npx nx build backend && npx nx build frontend",
+    "build": "npm install && npx nx build backend && npx nx build frontend",
     "serve": "npx nx run backend:serve"
   },
   "private": true,
